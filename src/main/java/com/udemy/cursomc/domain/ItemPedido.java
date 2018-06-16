@@ -39,7 +39,7 @@ public class ItemPedido  implements Serializable{
 	}
 
 	//PEDIDO E PRODUTO
-	@JsonIgnore // Nao trazer
+	@JsonIgnore // Nao trazer pedido
 	public Pedido getPedido() {
 		return id.getPedido();
 
