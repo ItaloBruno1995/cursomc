@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class ItemPedido  implements Serializable{
@@ -13,6 +15,7 @@ public class ItemPedido  implements Serializable{
 	//CHAVE COMPOSTA CONTENDO O PRODUTO E O PEDIDO
 	
 	//CHAVE COMPOSTA
+	@JsonIgnore //Nem Olha
 	@EmbeddedId //Tipo Classe Auxiliar
 	private ItemPedidoPK id = new ItemPedidoPK();
 	
@@ -36,11 +39,12 @@ public class ItemPedido  implements Serializable{
 	}
 
 	//PEDIDO E PRODUTO
+	@JsonIgnore // Nao trazer
 	public Pedido getPedido() {
 		return id.getPedido();
 
 	}
-	
+
 	public Produto getProduto() {
 		return id.getProduto();
 

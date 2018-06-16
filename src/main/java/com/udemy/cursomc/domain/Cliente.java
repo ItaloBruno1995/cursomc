@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.udemy.cursomc.domain.enums.TipoCliente;
 
@@ -43,6 +44,7 @@ public class Cliente  implements Serializable{
 	
 	
 	//Um Cliente pode Ter Varios pedidos
+	@JsonBackReference //Não serizail(Cliente nao tras pedidos)
 	@OneToMany(mappedBy="cliente")
 	private List<Pedido> pedidos = new ArrayList<>(); //Coleção nao coloca no Construtor
 	
