@@ -31,6 +31,12 @@ public class CategoriaService {
 		return obj;
 	}
 	
+	//INSERIR UMA CATEGORIA
 	
+	public  Categoria insert(Categoria obj) {
+		obj.setId(null);//GARANTIR QUE É NOVO OBJETO
+		return repository.save(obj);//SAVE: RETORNA UM OBJETO
+		
+	}
 	
 }
