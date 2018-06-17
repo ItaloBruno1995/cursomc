@@ -39,4 +39,16 @@ public class CategoriaService {
 		
 	}
 	
+	
+	//ATUALIZAR UMA CATEGORA
+	
+	public  Categoria update(Categoria obj) {
+		buscar(obj.getId());//Verificar de Id existe
+		
+		return repository.save(obj);//SAVE: RETORNA UM OBJETO
+		
+	}
+	
+	
+	
 }
