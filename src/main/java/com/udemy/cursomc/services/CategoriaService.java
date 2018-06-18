@@ -2,12 +2,13 @@ package com.udemy.cursomc.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.udemy.cursomc.domain.Categoria;
 import com.udemy.cursomc.repositories.CategoriaRepository;
+import com.udemy.cursomc.services.exceptions.DataIntegrityException;
 import com.udemy.cursomc.services.exceptions.ObjectNotFoundException;
-
 
 
 @Service
@@ -49,6 +50,19 @@ public class CategoriaService {
 		
 	}
 	
+	//DELETAR
+	public void delete(Integer id) {
+	
+		buscar(id);	//Verificar se ID existe
+		try {
+		repository.delete(id);
+		}
+		catch (DataIntegrityViolationException e) {
+			//CRIAR EXPION PERSONALIZADA
+			throw new DataIntegrityException("Nao é Possivel excluir uma Categoria que possui Produtos");
+			
+		}
+	}
 	
 	
 }
